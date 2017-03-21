@@ -88,7 +88,7 @@ angular.module('angular-jwt.authManager', [])
           }
       }
 
-      if ($injector.has('$transition')) {
+      if ($injector.has('$transitions')) {
         var $transitions = $injector.get('$transitions');
         $transitions.onStart({}, verifyState);
       } else {
