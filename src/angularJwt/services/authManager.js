@@ -49,7 +49,7 @@ angular.module('angular-jwt.authManager', [])
             $rootScope.$broadcast('tokenHasExpired', token);
           }
         }
-      }      
+      }
 
       function checkAuthOnRefresh() {
         if ($injector.has('$transitions')) {
@@ -82,9 +82,9 @@ angular.module('angular-jwt.authManager', [])
 
       function verifyState(transition) {
         var route = transition.to();
+        var $state = transition.router.stateService;
           if (route && route.data && route.data.requiresLogin === true && !isAuthenticated()) {
-            invokeRedirector(config.unauthenticatedRedirector);
-            return false;
+            return $state.target(config.loginPath);
           }
       }
 
