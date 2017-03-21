@@ -90,13 +90,13 @@ angular.module('angular-jwt.authManager', [])
 
       if ($injector.has('$transition')) {
         var $transitions = $injector.get('$transitions');
-        $transitions.onStart({}, verifyState);;
+        $transitions.onStart({}, verifyState);
       } else {
         var eventName = ($injector.has('$state')) ? '$stateChangeStart' : '$routeChangeStart';
         $rootScope.$on(eventName, verifyRoute);
       }
 
-      
+
 
       return {
         authenticate: authenticate,
