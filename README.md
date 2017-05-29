@@ -234,6 +234,13 @@ Almost all applications that implement authentication need some indication of wh
   <button ng-if="!isAuthenticated">Log In</button>
   <button ng-if="isAuthenticated">Log Out</button>
 ```
+**Note:** `authManager` set `isAuthenticated` on your `$rootScope` object, If you are using component-based architecture,
+your component `$scope` is isolated scope, it does not inherits `$rootScope` properties, you need to access `$rootScope` from component's template:
+
+```html
+  <button ng-if="!$root.isAuthenticated">Log In</button>
+  <button ng-if="$root.isAuthenticated">Log Out</button>
+```
 
 ### Getting Authentication State on Page Refresh
 
