@@ -1,5 +1,5 @@
  angular.module('angular-jwt.jwt', [])
-  .service('jwtHelper', function($window) {
+  .service('jwtHelper', function($window, $base64) {
 
     this.urlBase64Decode = function(str) {
       var output = str.replace(/-/g, '+').replace(/_/g, '/');
@@ -11,7 +11,7 @@
           throw 'Illegal base64url string!';
         }
       }
-      return $window.decodeURIComponent(escape($window.atob(output))); //polyfill https://github.com/davidchambers/Base64.js
+      return $window.decodeURIComponent(escape($base64.decode(output))); //polyfill https://github.com/davidchambers/Base64.js
     };
 
 
