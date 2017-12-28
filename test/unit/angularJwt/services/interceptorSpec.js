@@ -3,6 +3,7 @@
 describe('interceptor', function() {
 
   beforeEach(function() {
+    module('base64');
     module('angular-jwt.interceptor');
     module('angular-jwt.options');
   });
@@ -17,7 +18,7 @@ describe('interceptor', function() {
     module( function ($httpProvider, jwtInterceptorProvider, jwtOptionsProvider) {
       jwtInterceptorProvider.tokenGetter = function() {
         return 123;
-      }
+      };
       $httpProvider.interceptors.push('jwtInterceptor');
     });
 

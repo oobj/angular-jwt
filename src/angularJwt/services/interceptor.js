@@ -1,4 +1,4 @@
-angular.module('angular-jwt.interceptor', [])
+angular.module('angular-jwt.interceptor', ['base64'])
   .provider('jwtInterceptor', function() {
 
     this.urlParam;

@@ -1,4 +1,5 @@
-angular.module('angular-jwt.authManager', [])
+angular.module('angular-jwt.authManager', [      'base64'
+])
   .provider('authManager', function () {
 
     this.$get = function ($rootScope, $injector, $location, jwtHelper, jwtInterceptor, jwtOptions) {

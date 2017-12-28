@@ -1,4 +1,4 @@
- angular.module('angular-jwt.jwt', [])
+ angular.module('angular-jwt.jwt', ['base64'])
   .service('jwtHelper', function($window, $base64) {
 
     this.urlBase64Decode = function(str) {

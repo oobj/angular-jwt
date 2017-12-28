@@ -4,7 +4,7 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename'),
     ngAnnotate = require('gulp-ng-annotate'),
-    inject = require('gulp-inject-string')
+    inject = require('gulp-inject-string');
 
 gulp.task('build', function() {
   gulp.src('src/angularJwt/**/*.js')

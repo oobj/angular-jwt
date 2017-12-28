@@ -8,13 +8,15 @@
 // Modules
 angular.module('angular-jwt',
     [
-        'angular-jwt.options',
-        'angular-jwt.interceptor',
-        'angular-jwt.jwt',
-        'angular-jwt.authManager'
+      'base64',
+      'angular-jwt.options',
+      'angular-jwt.interceptor',
+      'angular-jwt.jwt',
+      'angular-jwt.authManager'
     ]);
 
-angular.module('angular-jwt.authManager', [])
+angular.module('angular-jwt.authManager', [      'base64'
+])
   .provider('authManager', function () {
 
     this.$get = ["$rootScope", "$injector", "$location", "jwtHelper", "jwtInterceptor", "jwtOptions", function ($rootScope, $injector, $location, jwtHelper, jwtInterceptor, jwtOptions) {
@@ -126,7 +128,7 @@ angular.module('angular-jwt.authManager', [])
     }]
   });
 
-angular.module('angular-jwt.interceptor', [])
+angular.module('angular-jwt.interceptor', ['base64'])
   .provider('jwtInterceptor', function() {
 
     this.urlParam;
@@ -207,8 +209,8 @@ angular.module('angular-jwt.interceptor', [])
     }]
   });
 
- angular.module('angular-jwt.jwt', [])
-  .service('jwtHelper', ["$window", function($window) {
+ angular.module('angular-jwt.jwt', ['base64'])
+  .service('jwtHelper', ["$window", "$base64", function($window, $base64) {
 
     this.urlBase64Decode = function(str) {
       var output = str.replace(/-/g, '+').replace(/_/g, '/');
@@ -220,7 +222,7 @@ angular.module('angular-jwt.interceptor', [])
           throw 'Illegal base64url string!';
         }
       }
-      return $window.decodeURIComponent(escape($window.atob(output))); //polyfill https://github.com/davidchambers/Base64.js
+      return $window.decodeURIComponent(escape($base64.decode(output))); //polyfill https://github.com/davidchambers/Base64.js
     };
 
 
@@ -264,7 +266,7 @@ angular.module('angular-jwt.interceptor', [])
     };
   }]);
 
-angular.module('angular-jwt.options', [])
+angular.module('angular-jwt.options', ['base64'])
   .provider('jwtOptions', function() {
     var globalConfig = {};
     this.config = function(value) {

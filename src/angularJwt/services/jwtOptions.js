@@ -1,4 +1,4 @@
-angular.module('angular-jwt.options', [])
+angular.module('angular-jwt.options', ['base64'])
   .provider('jwtOptions', function() {
     var globalConfig = {};
     this.config = function(value) {

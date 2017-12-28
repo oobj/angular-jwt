@@ -32,5 +32,9 @@ describe('Main Module', function() {
     expect(hasModule('angular-jwt.jwt')).to.be.ok;
   });
 
+  it('should load angular-base64 module', function() {
+    expect(hasModule('base64')).to.be.ok;
+  });
+
 
 });
